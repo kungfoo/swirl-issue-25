@@ -1,16 +1,2 @@
-[package]
-name = "swirl-issue-25"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-swirl = { git = "https://github.com/sgrif/swirl.git", branch = "master", features = ["r2d2"]}
-serde = "1.0"
-serde_json = "1.0"
-diesel = { version = "1.4.4", features = ["postgres", "chrono", "r2d2", "uuidv07"] }
-dotenv = "0.15.0"
-log = "0.4.14"
-simple_logger = "2.1.0"
-uuid = { version = "0.8", features=["v4"]}
+[workspace]
+members = ["db", "jobs"]

@@ -46,6 +46,7 @@ dependencies = [
  "libc",
  "num-integer",
  "num-traits",
+ "serde",
  "time 0.1.44",
  "winapi",
 ]
@@ -69,6 +70,18 @@ checksum = "ccc0a48a9b826acdf4028595adc9db92caea352f7af011a3034acd172a52a0aa"
 dependencies = [
  "quote",
  "syn",
+]
+
+[[package]]
+name = "db"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "diesel",
+ "dotenv",
+ "log",
+ "serde",
+ "uuid",
 ]
 
 [[package]]
@@ -171,6 +184,19 @@ name = "itoa"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1aab8fc367588b89dcee83ab0fd66b72b50b72fa1904d7095045ace2b0c81c35"
+
+[[package]]
+name = "jobs"
+version = "0.1.0"
+dependencies = [
+ "db",
+ "log",
+ "serde",
+ "serde_json",
+ "simple_logger",
+ "swirl",
+ "uuid",
+]
 
 [[package]]
 name = "lazy_static"
@@ -395,20 +421,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "swirl-issue-25"
-version = "0.1.0"
-dependencies = [
- "diesel",
- "dotenv",
- "log",
- "serde",
- "serde_json",
- "simple_logger",
- "swirl",
- "uuid",
-]
-
-[[package]]
 name = "swirl_proc_macro"
 version = "0.1.0"
 source = "git+https://github.com/sgrif/swirl.git?branch=master#fe78e7011c72d7f0eeb54e0022ae36f0f1fb02ad"
@@ -480,6 +492,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bc5cf98d8186244414c848017f0e2676b3fcb46807f6668a97dfe67359a3c4b7"
 dependencies = [
  "getrandom",
+ "serde",
 ]
 
 [[package]]

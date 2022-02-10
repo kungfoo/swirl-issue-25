@@ -1,13 +1,18 @@
 #[macro_use]
 extern crate log;
 
+use db::connection::init_pool;
 use simple_logger::SimpleLogger;
 use std::thread::sleep;
 use std::time::Duration;
 use swirl::Runner;
-use swirl_issue_25::connection::init_pool;
+
+use jobs::images::scale_image;
 
 fn main() {
+    // make sure to 'use' this job method, so it's not unused
+    let _jobs = [scale_image];
+
     SimpleLogger::new().init().unwrap();
 
     info!("starting up...");

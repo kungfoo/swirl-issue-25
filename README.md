@@ -1,12 +1,18 @@
 # Swirl Issue #25 Repro Case
 
-## How to run it
+## How to reproduce
 
 - Spin up a database for example using using `docker-compose up -d`
-- Run `diesel migration run`
+- Run `cd db && diesel migration run`
 - Run `cargo run --bin job-runner`
 - Run `cargo run --bin submit-job`
-- Observe output of `job-runner`
+- Observe output of `job-runner`, it works as expected.
+
+Then:
+
+- Run `cargo run --release --bin job-runner`
+- Run `cargo run --release --bin submit-job`
+- Observe output of `job-runner`, it logs an error 
 
 ## Expected behaviour
 
@@ -17,5 +23,5 @@ Both `cargo run` and `cargo run --release` should produce the same output.
 When running the `--release` binary of `job-runner`, one can observe the following output:
 
 ```sh
-jobs::images] scale_image: from: file:///var/swirl-sample/images/c73f6708-5942-4eab-844c-dd00eaa4ff51.jpeg, to: file:///var/swirl-sample/images/scaled/c73f6708-5942-4eab-844c-dd00eaa4ff51.jpeg, dimension: Dimension { width: 400, height: 1200 }
+Job ${n} failed to run: Unknown job type scale_image
 ```

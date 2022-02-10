@@ -1,10 +1,10 @@
 #[macro_use]
 extern crate log;
 
+use db::connection::init_pool;
+use jobs::images::{scale_image, Dimension, ScaleImageJob};
 use simple_logger::SimpleLogger;
 use swirl::Job;
-use swirl_issue_25::connection::init_pool;
-use swirl_issue_25::images::{scale_image, Dimension, ScaleImageJob};
 use uuid::Uuid;
 
 fn main() -> Result<(), String> {
