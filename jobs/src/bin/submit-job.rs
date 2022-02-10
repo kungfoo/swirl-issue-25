@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate log;
 
-use db::connection::init_pool;
+use db::connection::establish_connection;
 use jobs::images::{scale_image, Dimension, ScaleImageJob};
 use simple_logger::SimpleLogger;
 use swirl::Job;
@@ -9,8 +9,7 @@ use uuid::Uuid;
 
 fn main() -> Result<(), String> {
     SimpleLogger::new().init().unwrap();
-    let pool = init_pool();
-    let connection = pool.get().unwrap();
+    let connection = establish_connection();
     let id = Uuid::new_v4();
 
     let src_url = format!("file:///var/swirl-sample/images/{}.jpeg", id);
