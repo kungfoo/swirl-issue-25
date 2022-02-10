@@ -1,0 +1,17 @@
+version: '3.2'
+
+services:
+  db:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: development
+      POSTGRES_USER: swirl-sample
+    ports:
+      - 5432:5432
+    volumes:
+      - swirl-sample-pg-data:/var/lib/postgresql/data
+
+volumes:
+  swirl-sample-pg-data:
+    driver: local

@@ -1,0 +1,1 @@
+drop table background_jobs;
